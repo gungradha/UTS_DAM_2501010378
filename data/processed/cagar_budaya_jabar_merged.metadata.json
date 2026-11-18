@@ -1,0 +1,118 @@
+{
+  "judul": "Cagar Budaya Jawa Barat 2014-2018 + cuaca (Open-Meteo) + profil wilayah (Wikipedia ID)",
+  "dibuat_utc": "2026-11-18T12:29:16+00:00",
+  "jumlah_baris": 134,
+  "jumlah_kolom": 16,
+  "kolom": {
+    "kode_kabupaten_kota": "int64",
+    "nama_kabupaten_kota": "string",
+    "tahun": "int64",
+    "total_cagar_budaya": "float64",
+    "n_kategori": "int64",
+    "n_nilai_kosong": "int64",
+    "ada_koreksi_ribuan": "bool",
+    "skema_kategori": "object",
+    "suhu_rata2_c": "float64",
+    "curah_hujan_total_mm": "float64",
+    "hari_hujan": "int64",
+    "n_hari_data": "int64",
+    "luas_km2": "float64",
+    "penduduk_wikipedia": "float64",
+    "jumlah_kecamatan": "float64",
+    "cb_per_100km2": "float64"
+  },
+  "grain": "1 baris = 1 kabupaten/kota x 1 tahun",
+  "merge": [
+    {
+      "kiri": "berkas CSV (agregat)",
+      "kanan": "Open-Meteo tahunan",
+      "kunci": [
+        "kode_kabupaten_kota",
+        "tahun"
+      ],
+      "how": "left",
+      "validate": "one_to_one"
+    },
+    {
+      "kiri": "hasil merge 1",
+      "kanan": "Wikipedia ID",
+      "kunci": [
+        "kode_kabupaten_kota"
+      ],
+      "how": "left",
+      "validate": "many_to_one"
+    }
+  ],
+  "pemeriksaan_duplikasi": {
+    "duplikat_kunci": 0,
+    "duplikat_penuh": 0
+  },
+  "catatan_kualitas": [
+    "Kategori jenis_benda berubah pada 2018; total antartahun tidak sepenuhnya sebanding.",
+    "20 nilai kosong (2018) dibiarkan NaN.",
+    "Koreksi pemisah ribuan diterapkan: True"
+  ],
+  "sumber": [
+    {
+      "sumber": "data.go.id — Jumlah Benda Cagar Budaya Berdasarkan Jenis (Disparbud Jabar)",
+      "url": "https://data.go.id/dataset/dataset/jumlah-benda-cagar-budaya-berdasarkan-jenis-di-jawa-barat",
+      "tanggal_akses_utc": "2026-11-18T11:24:27+00:00",
+      "lisensi": "e601a319-153d-4279-86ef-5787e5f484a8",
+      "metode": "unduh berkas CSV",
+      "file": "data/raw/disparbud-od_15354_jumlah_benda_cagar_budaya_berdasarkan_jenis_v1.csv",
+      "ukuran_bytes": 24679,
+      "md5": "aef68f27189cb8ebfabda832ddb4b99a",
+      "catatan": "Berkas asli tidak dimodifikasi"
+    },
+    {
+      "sumber": "Open-Meteo Geocoding API",
+      "url": "https://geocoding-api.open-meteo.com/v1/search",
+      "tanggal_akses_utc": "2026-11-18T11:27:35+00:00",
+      "lisensi": "CC BY 4.0 (atribusi Open-Meteo.com)",
+      "metode": "API GET",
+      "file": "data/raw/openmeteo_geocoding_jabar.json",
+      "ukuran_bytes": 48838,
+      "md5": "0a2bad96926910c2a78e885618bf869b",
+      "catatan": "Respons mentah geocoding per kab/kota"
+    },
+    {
+      "sumber": "Open-Meteo Historical Weather API",
+      "url": "https://archive-api.open-meteo.com/v1/archive",
+      "tanggal_akses_utc": "2026-11-18T12:27:01+00:00",
+      "lisensi": "CC BY 4.0 (atribusi Open-Meteo.com)",
+      "metode": "API GET",
+      "file": "data/raw/openmeteo_archive_jabar_2014_2018.json",
+      "ukuran_bytes": 976724,
+      "md5": "2e5000ab46a6b6d848f8fbf0cf30c54a",
+      "catatan": "Suhu rata-rata & curah hujan harian per titik koordinat kab/kota"
+    },
+    {
+      "sumber": "robots.txt id.wikipedia.org",
+      "url": "https://id.wikipedia.org/robots.txt",
+      "tanggal_akses_utc": "2026-11-18T12:27:25+00:00",
+      "lisensi": "—",
+      "metode": "HTTP GET",
+      "file": "data/raw/robots_id_wikipedia.txt",
+      "ukuran_bytes": 15801,
+      "md5": "8dd94bf3d01cbb25e0af4e64c0485433",
+      "catatan": "Bukti pemeriksaan kepatuhan"
+    },
+    {
+      "sumber": "Wikipedia ID — Daftar kabupaten dan kota di Jawa Barat",
+      "url": "https://id.wikipedia.org/wiki/Daftar_kabupaten_dan_kota_di_Jawa_Barat",
+      "tanggal_akses_utc": "2026-11-18T12:27:35+00:00",
+      "lisensi": "CC BY-SA 4.0 (Wikipedia)",
+      "metode": "web scraping (HTML statis)",
+      "file": "data/raw/wikipedia_id_kabkota_jabar.html",
+      "ukuran_bytes": 153419,
+      "md5": "2c450e795acb66d63f74ab420d4153e6",
+      "catatan": "HTML mentah, tidak dimodifikasi"
+    }
+  ],
+  "md5_keluaran": "6a7fc66ae833813937cc0676b38521cb",
+  "lingkungan": {
+    "python": "3.13.18",
+    "pandas": "2.2.3",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39"
+  }
+}
