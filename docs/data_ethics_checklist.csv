@@ -1,0 +1,10 @@
+no,butir,status,bukti
+1,"Sumber sah dan tidak termasuk daftar terlarang (Booking, Agoda, Traveloka, tiket.com, Airbnb, Tripadvisor, Google Maps, media sosial)",YA,"3 sumber: portal pemerintah (Open Data Jabar/data.go.id), Open-Meteo, Wikipedia. Domain terlarang ditemukan: tidak ada. Lihat provenance.json"
+2,Lisensi setiap sumber teridentifikasi dan didokumentasikan,YA,3 dari 3 sumber berstatus LENGKAP di bukti_lisensi_tos.csv (sisanya masih berisi kolom 'ISI:')
+3,Ketentuan penggunaan (ToS) portal/situs sumber dibaca dan didokumentasikan,YA,URL ketentuan + tanggal akses + screenshot per sumber di bukti_lisensi_tos.csv dan folder gambar/
+4,Tidak ada data pribadi (PII) pada data yang dikumpulkan,YA,20 kolom di 3 tabel dipindai (nama kolom + pola email/telepon/NIK); temuan PII: tidak ada. Lihat pii_scan_semua_sheet.csv
+5,Quasi-identifier dinilai (risiko re-identifikasi),YA,"Kandidat: wilayah (kode/nama kab-kota) + tahun + jenis. Data agregat per wilayah, bukan individu; duplikat kombinasi=0. Risiko re-identifikasi rendah"
+6,robots.txt diperiksa dan dipatuhi,YA,"can_fetch=True, crawl-delay=None, robots MD5=8dd94bf3d01cbb25e0af4e64c0485433; bukti: robots_check_evidence.json"
+7,"Akses sopan: User-Agent berisi kontak, jeda antar-request, timeout, retry",YA,"User-Agent: UTS-DAM-INSTIKI/1.0 (mahasiswa Informatika INSTIKI; mailto:mahasiswa@instiki.ac.id); jeda 1.5s; timeout 30s; retry 3x (429/5xx, exponential backoff); 90 request tercatat"
+8,Kredensial/API key tidak tertulis di kode dan tidak ikut ke repositori,YA,.env ada di .gitignore: True; pola rahasia di notebook/.py: tidak ditemukan; Open-Meteo tanpa API key; email via get_secret()
+9,"Provenance dan integritas data mentah terjaga (hash, data mentah tidak diubah)",YA,MD5 5 berkas mentah dihitung ulang dan cocok; berkas mentah read-only; lihat provenance.json

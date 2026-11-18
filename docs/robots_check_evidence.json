@@ -1,0 +1,11 @@
+{
+  "waktu_utc": "2026-11-18T12:27:25+00:00",
+  "robots_url": "https://id.wikipedia.org/robots.txt",
+  "robots_md5": "8dd94bf3d01cbb25e0af4e64c0485433",
+  "user_agent": "UTS-DAM-INSTIKI/1.0 (mahasiswa Informatika INSTIKI; mailto:mahasiswa@instiki.ac.id)",
+  "target_url": "https://id.wikipedia.org/wiki/Daftar_kabupaten_dan_kota_di_Jawa_Barat",
+  "diizinkan_can_fetch": true,
+  "crawl_delay_detik": null,
+  "jeda_yang_dipakai_detik": 1.5,
+  "jumlah_request_ke_target": 1
+}
